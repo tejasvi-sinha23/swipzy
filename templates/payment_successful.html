@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-left">
+            <img src="{{ url_for('static', filename='logo.jpg') }}" class="logo">
+            <span class="tagline">Shop Name</span>
+        </div>
+    </div>
+
+    <div class="payment-success-container">
+        <h2>Payment Successful!</h2>
+        <p>Thank you for your purchase, {{ name }}. Your order will be shipped soon!</p>
+        <a href="/" class="success-button">Back to Home</a>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 Shop Name. All rights reserved.</p>
+    </footer>
+</body>
+</html>

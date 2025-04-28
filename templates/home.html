@@ -1,0 +1,46 @@
+<!-- templates/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Swipzy - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Swipzy Logo" class="logo">
+        <span class="tagline">Swipe. Shop. Slay.</span>
+    </div>
+    <div class="nav-right">
+        <a href="{{ url_for('login') }}" class="nav-button">Login/Signup</a>
+    </div>
+</nav>
+
+<!-- Blinking Images Section below Welcome -->
+<section class="home-content">
+    <h1>Welcome to Swipzy!</h1>
+
+    <!-- Blinking Images Container -->
+    <div class="blinking-images-container">
+        <img class="blinking-image" src="{{ url_for('static', filename='images/bg1.jpg') }}" alt="Blinking Image 1">
+        <img class="blinking-image" src="{{ url_for('static', filename='images/bg2.jpg') }}" alt="Blinking Image 2">
+        <img class="blinking-image" src="{{ url_for('static', filename='images/bg3.jpg') }}" alt="Blinking Image 3">
+    </div>
+
+    <p class="description">
+        Swipe through an endless collection of essentials, discover what you love, and shop effortlessly.
+        At Swipzy, we believe shopping should be simple, exciting, and smart — just a Swipe away!
+        Whether it's the latest in stationery, kitchen gadgets, furniture, or more — we've got it all, just for you.
+        Create your account, dive into your personalized world of shopping, and start your Swipzy journey today.
+        Because here, you don't just shop — you <strong>Swipe, Shop, and Slay</strong>!
+    </p>
+</section>
+
+<footer class="footer">
+    <p>Contact us: 📷 @swipzy_official | 📧 swipzyhelp@support.com | ☎️ +91 9876543210</p>
+</footer>
+
+</body>
+</html>

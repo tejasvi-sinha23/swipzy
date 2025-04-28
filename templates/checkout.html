@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-left">
+            <img src="{{ url_for('static', filename='logo.jpg') }}" class="logo">
+            <span class="tagline">Shop Name</span>
+        </div>
+    </div>
+
+    <div class="billing-container">
+        <h2>Billing Details</h2>
+        <form method="POST" action="/checkout">
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="text" name="address" placeholder="Shipping Address" required>
+            <input type="text" name="phone" placeholder="Phone Number" required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 Shop Name. All rights reserved.</p>
+    </footer>
+</body>
+</html>

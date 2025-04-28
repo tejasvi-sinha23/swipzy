@@ -1,0 +1,39 @@
+<!-- templates/dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Swipzy - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="{{ url_for('static', filename='logo.jpg') }}" class="logo">
+        <span class="tagline">Swipe. Shop. Slay.</span>
+    </div>
+    <div class="nav-right">
+        <a href="{{ url_for('browse') }}" class="nav-button">Browse Products</a>
+        <a href="{{ url_for('cart') }}" class="nav-button">View Cart</a>
+        <a href="{{ url_for('logout') }}" class="nav-button">Logout</a>
+    </div>
+</nav>
+
+<section class="dashboard">
+    <h1>Hello, {{ user }}! 👋</h1>
+    <h3>Recommended for you:</h3>
+    <div class="products">
+        {% for product in recommended %}
+            <div class="product-card">
+                <h4>{{ product.name }}</h4>
+                <p>Price: ₹{{ product.price }}</p>
+                <p>Category: {{ product.category }}</p>
+                <a href="{{ url_for('add_to_cart', product_name=product.name) }}" class="add-button">Add to Cart</a>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+</body>
+</html>

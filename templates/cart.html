@@ -1,0 +1,46 @@
+<!-- templates/cart.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Swipzy - Your Cart</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="{{ url_for('static', filename='logo.jpg') }}" class="logo">
+        <span class="tagline">Swipe. Shop. Slay.</span>
+    </div>
+    <div class="nav-right">
+        <a href="{{ url_for('dashboard') }}" class="nav-button">Dashboard</a>
+        <a href="{{ url_for('browse') }}" class="nav-button">Browse</a>
+        <a href="{{ url_for('logout') }}" class="nav-button">Logout</a>
+    </div>
+</nav>
+
+<section class="cart">
+    <h2>Your Cart</h2>
+    {% if cart %}
+        <ul class="cart-list">
+            {% for item in cart %}
+                <li>
+                    <img src="{{ url_for('static', filename='images/' + item.name.lower() + '.jpg') }}" alt="{{ item.name }}" class="cart-item-img">
+                    <div>
+                        <h4>{{ item.name }}</h4>
+                        <p>Price: ₹{{ item.price }}</p>
+                    </div>
+                    <a href="{{ url_for('remove_from_cart', product_name=item.name) }}" class="remove-button">Remove</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <h3>Total: ₹{{ total }}</h3>
+        <a href="{{ url_for('checkout') }}" class="checkout-button">Checkout</a>
+    {% else %}
+        <p>Your cart is empty!</p>
+    {% endif %}
+</section>
+
+</body>
+</html>

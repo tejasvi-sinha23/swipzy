@@ -1,0 +1,53 @@
+<!-- browse.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Products</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Logo" class="logo">
+        <span class="tagline">Swipe. Shop. Slay.</span>
+    </div>
+    <div class="nav-right">
+        <!-- Only show these options if the user is logged in -->
+        <a href="{{ url_for('dashboard') }}" class="nav-button">Dashboard</a>
+        <a href="{{ url_for('cart') }}" class="nav-button">View Cart</a>
+        <a href="{{ url_for('logout') }}" class="nav-button">Logout</a>
+    </div>
+</nav>
+
+<section class="browse-container">
+    <h1>Browse Products</h1>
+
+    <!-- Search Bar -->
+    <form method="GET" action="{{ url_for('browse') }}">
+        <input type="text" name="search" placeholder="Search products..." value="{{ request.args.get('search', '') }}">
+        <button type="submit">Search</button>
+    </form>
+
+    <div class="product-grid">
+        {% for product in products %}
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='images/' + product.name.lower() + '.jpg') }}" alt="{{ product.name }}">
+
+                <h4>{{ product.name }}</h4>
+                <p>{{ product.category }}</p>
+                <p>${{ product.price }}</p>
+                <a href="{{ url_for('add_to_cart', product_name=product.name) }}" class="add-button">Add to Cart</a>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<footer class="footer">
+    <p>&copy; 2025 Swipzy. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
